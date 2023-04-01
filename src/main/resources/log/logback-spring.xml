@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+<include resource="org/springframework/boot/logging/logback/base.xml"/>
+<appender name="ROLLIN" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+        <!-- daily rollover -->
+        <FileNamePattern>/yiXin/yiXingSite/log/yiXing.%d{yyyy-MM-dd}.log</FileNamePattern>
+        <maxHistory>30</maxHistory>
+    </rollingPolicy>
+    <encoder>
+        <Pattern>%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){red} [%thread] %-5level %logger{35} - %msg %n</Pattern>
+    </encoder>
+</appender>
+<root level="INFO">
+    <appender-ref ref="ROLLIN"/>
+</root>
+<logger name="org.springframework.web" level="INFO"/>
+<logger name="com.wingstar.dao.mapper" level="INFO" additivity="true">
+    <appender-ref ref="ROLLIN" />
+</logger>
+</configuration>

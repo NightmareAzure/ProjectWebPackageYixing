@@ -1,0 +1,9 @@
+server:
+  port: 7201
+
+logging:
+  config: classpath:log/logback-spring.xml
+
+charset:
+  encoding: utf-8
+

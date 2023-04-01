@@ -1,0 +1,11 @@
+.event-nav{
+    position: fixed;
+}
+.event-nav ul li{
+    float: left;
+    width: 20%;
+    box-sizing: border-box;
+    position: relative;
+    cursor: pointer;
+    padding-right: 2px;
+}
