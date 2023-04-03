@@ -1,0 +1,182 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Articles</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Favicon -->
+
+
+    <link rel="stylesheet" href="static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/css/animate.min.css">
+    <link rel="stylesheet" href="static/css/meanmenu.css">
+    <link rel="stylesheet" href="static/css/magnific-popup.css">
+    <link rel="stylesheet" href="static/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="static/css/font-awesome.min.css">
+    <link rel="stylesheet" href="static/css/et-line-icon.css">
+    <link rel="stylesheet" href="static/css/reset.css">
+    <link rel="stylesheet" href="static/css/ionicons.min.css">
+    <link rel="stylesheet" href="static/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="static/css/responsive.css">
+    <script src="static/js/modernizr-3.11.2.min.js"></script>
+    <link rel="stylesheet" href="static/js/lib-master/theme-chalk/index.css"/>
+    <link rel="stylesheet" href="static/css/elementcss.css"/>
+    <script src="static/js/vue.js" charset="utf-8"></script>
+    <script src="static/js/lib-master/index.js" charset="utf-8"></script>
+</head>
+<body>
+<!--[if lt IE 8]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your
+    browser</a> to improve your experience.</p>
+<![endif]-->
+
+<!-- Header Area Start -->
+<header id="headerpage" class="header-area two header-sticky"></header>
+<!-- Header Area End -->
+<div class="contact-area pt-120 pb-140 clearfix">
+    <h3>
+        NEWS AND COURSES
+    </h3>
+    <div class="container">
+        <div class="sidebar">
+            <ul>
+                <li><a href="#">导航项1</a></li>
+                <li><a href="#">导航项2</a></li>
+                <li><a href="#">导航项3</a></li>
+            </ul>
+        </div>
+        <div id="all-articles" class="all-articles">
+            <el-row>
+                <el-col :span="6" v-for="article in articles" :key="article.id">
+                    <div class="article">
+                        <div class="image"><img :src="article.image" alt></div>
+                        <div class="article-text">
+                            <div class="title">{{ article.title }}</div>
+                            <div class="excerpt">{{ article.excerpt }}</div>
+                            <div class="meta">
+                                <div class="date">{{ article.date }}</div>
+                                <div class="category">{{ article.category }}</div>
+                            </div>
+                        </div>
+                    </div>
+                </el-col>
+            </el-row>
+        </div>
+    </div>
+</div>
+<!-- Contact End -->
+
+<!-- Footer Start -->
+<footer class="footerpage"></footer>
+<!-- Footer End -->
+
+<script src="static/js/jquery-3.6.0.min.js"></script>
+<script src="static/js/jquery-migrate-3.3.2.min.js"></script>
+<script src="static/js/bootstrap.bundle.min.js"></script>
+<script src="static/js/jquery.meanmenu.js"></script>
+<script src="static/js/jquery.magnific-popup.js"></script>
+<script src="static/js/ajax-mail.js"></script>
+<script src="static/js/owl.carousel.min.js"></script>
+<script src="static/js/jquery.mb.YTPlayer.js"></script>
+<script src="static/js/jquery.nicescroll.min.js"></script>
+<script src="static/js/axios-0.18.0.js"></script>
+<script src="static/js/plugins.js"></script>
+<script src="static/js/main.js"></script>
+<script>
+    // import axios from "./static/js/axios-0.18.0.js";
+    import axios from "axios";
+
+    export default {
+        name: "All-articles",
+        data() {
+            return {
+                articles: [],
+            };
+        },
+        mounted() {
+             axios.get("https://example.com/api/articles").then((response) => {
+                this.articles = response.data;
+            });
+        },
+    };
+</script>
+</body>
+<style>
+    .article {
+        margin: 10px;
+        border: 1px solid #ccc;
+        padding: 10px;
+        display: inline-flex;
+    }
+
+    .title {
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .image img {
+        width: 25%;
+        height: auto;
+        margin-bottom: 10px;
+    }
+
+    .article-text{
+        width: 75%;
+    }
+
+    .excerpt {
+        margin-bottom: 10px;
+    }
+
+    .meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .date {
+        font-size: 14px;
+        color: #999;
+    }
+
+    .category {
+        font-size: 14px;
+        color: #999;
+    }
+
+    .all-articles {
+        float: left;
+        width: 80%;
+        padding: 20px;
+
+    }
+
+    .sidebar {
+        float: left;
+        width: 20%;
+        height: 100vh;
+    }
+
+    .sidebar ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        text-align: right; /* 将文本右对齐 */
+    }
+
+    .sidebar li {
+        margin-bottom: 10px;
+    }
+
+    .sidebar li:last-child {
+        margin-bottom: 0;
+    }
+
+
+</style>
+</html>
